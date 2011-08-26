@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# An example hook script that is called after a successful
+# commit is made.
+#
+# To enable this hook, rename this file to "post-commit".
+
+echo 'create filelist'
+ruby /usr/local/bin/make-filelist.rb ./ > ~/partial.filelist
+
+echo 'create TAGS'
+/usr/local/bin/ctags -e */**/*.rb
